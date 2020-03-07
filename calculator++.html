@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Calculator++</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .cal{
+            margin: 50%;
+        }
+        .btn1{
+            width: 60px;
+            height: 75px;
+        }
+        .result{
+            width: 240px;
+            height: 75px;
+            border:1px black solid;
+            text-align: right;
+            line-height: 75px;
+            font-size: 40px;
+            padding: 2px;
+        }
+    </style>
+  </head>
+  <body>
+        <div class="container cal">
+            <button id=gogo></button>
+            <form action="">
+                <div class="result" id="result"></div>
+                <div class="form-inline">
+                    <button style="width: 180px;" type="button" class="btn1" value="C" onclick="clearx()" id="C">C</button>
+
+                    <button type="button" class="btn1" value="←" id="backx" >←</button>
+                </div>
+                <div class="form-inline">
+                    <button type="button" class="btn1" value="1" onclick="getNum('1')" id="1">1</button>
+                    <button type="button" class="btn1" value="2" onclick="getNum('2')" id="2">2</button>
+                    <button type="button" class="btn1" value="3" onclick="getNum('3')" id="3">3</button>
+                    <button type="button" class="btn1" value="+" onclick="getNum('+')" id="plus">+</button>
+                </div>
+                <div class="form-inline">
+                    <button type="button" class="btn1" value="4" onclick="getNum('4')" id="4">4</button>
+                    <button type="button" class="btn1" value="5" onclick="getNum('5')" id="5">5</button>
+                    <button type="button" class="btn1" value="6" onclick="getNum('6')" id="6">6</button>
+                    <button type="button" class="btn1" value="-" onclick="getNum('-')" id="minus">-</button>
+                </div>
+                <div class="form-inline">
+                    <button type="button" class="btn1" value="7" onclick="getNum('7')" id="7">7</button>
+                    <button type="button" class="btn1" value="8" onclick="getNum('8')" id="8">8</button>
+                    <button type="button" class="btn1" value="9" onclick="getNum('9')" id="9">9</button>
+                    <button type="button" class="btn1" value="*" onclick="getNum('*')" id="times">*</button>
+                </div>
+                <div class="form-inline">
+                    <button type="button" class="btn1" value="." onclick="getNum('.')" id=".">.</button>
+                    <button type="button" class="btn1" value="0" onclick="getNum('0')" id="0">0</button>
+                    <button type="button" class="btn1" value="=" onclick="equal()" id="equa">=</button>
+                    <button type="button" class="btn1" value="/" onclick="getNum('/')" id="devide">/</button>
+                </div>
+            </form>
+        </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $(document).keydown(function(event){
+                if(event.keyCode==49){$("#1").click();}
+                if(event.keyCode==50){$("#2").click();}
+                if(event.keyCode==51){$("#3").click();}
+                if(event.keyCode==52){$("#4").click();}
+                if(event.keyCode==53){$("#5").click();}
+                if(event.keyCode==54){$("#6").click();}
+                if(event.keyCode==55){$("#7").click();}
+                if(event.keyCode==56){$("#8").click();}
+                if(event.keyCode==57){$("#9").click();}
+                if(event.keyCode==58){$("#0").click();}
+                if(event.keyCode==187){$("#plus").click();}
+                if(event.keyCode==189){$("#minus").click();}
+                if(event.keyCode==88){$("#times").click();}
+                if(event.keyCode==191){$("#divide").click();}
+                if(event.keyCode==46){$("#C").click();}
+                if(event.keyCode==8){$("#backx").click();}
+                if(event.keyCode==32){$("#equa").click();}
+               
+            });
+        });
+    // $(".btn1").click(function(){
+    //     var result = $(this).val();
+    //     console.log(result)
+    //     $("#result").text(result)
+    // })
+    function getNum(num){
+
+        $("#result").val(function(i,val){
+            return val + num;
+        });
+        $("#result").text(function(i,val){return val + num});
+        console.log(num);
+        
+    };
+    function clearx(){
+    //     let a = $("#result".text());
+    //    console.log(a);
+        $("#result").text("");
+        $("#result").val("");
+        // console.log(1);
+    }
+    function plus(){
+        
+        $("#result").text(function(i,val){return val + "+"});
+            console.log("+");
+        
+    }
+
+    function equal(){
+    //   $("#result").val(eval($("#result").val()));
+    //   $("#result").eval($("#result").val())
+        let sum = $("#result").text();
+        console.log(sum);
+
+
+        $("#result").text(eval(sum));
+    }
+    // function backx(){
+    //     let length = $("#result").text().length
+    //     console.log("length: " + length)
+    //     let newResult = $("#result").substr(0,length-1)
+    //     console.log(newResult)
+    //     // $("#result").text(newResult)
+    // }
+    $("#backx").click(function(){   
+        let length = $('#result').text().length;
+        let newResult = $('#result').text().substr(0,length-1);
+        $('#result').text(newResult);
+        console.log("長度: " + (length-1));
+        console.log("結果: " + newResult);
+    })
+    // $("#backx").click(function(){
+    //     $('#result').text(function(i,text){
+    //         return text.substr(0,text.length - 1)
+    //     })
+    // })
+
+    $("#gogo").click(function(){
+        for(let i = 0; i < 10; i++){
+            if(i==1){
+                console.log(i)
+            }else if(i==3){
+                console.log(i)
+            }else if(i==5){
+                console.log(i)
+            }
+        }
+    })
+    </script>
+  </body>
+</html>
